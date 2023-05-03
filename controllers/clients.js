@@ -9,7 +9,20 @@ async function get(req, res){
 
     res.send(clients)
 }
+async function remove(req, res){
+    const {id} = req.params
+
+    const remove = await ClientsModel.deleteOne({_id: id})
+
+    if(!remove.ok){
+        message = 'error'
+    }
+    res.send({
+        message: 'success'
+    })
+}
 
 module.exports = {
     get,
+    remove,
 }
