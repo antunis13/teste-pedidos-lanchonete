@@ -1,11 +1,12 @@
 const express = require('express')
 
 
-//const db = require('../database/db')
+const db = require('../database/db')
 const routes = require('../routes/routes')
 
 const app = express()
-//db.connect()
+db.connect()
+
 
 app.use(express.json())
 

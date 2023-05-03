@@ -1,21 +1,11 @@
 const router = require('express').Router()
 const {Router} = require('express')
-const ProductController = require('../controllers/products')
+const ClientsController = require('../controllers/clients')
 
-//admin
-router.get('/admin', (req, res) => {
-    res.send({
-        ok: 'funciounou'
-    })
-})
+
 
 
 //clients
-router.get('/clients', (req, res) => {
-
-    res.send({
-        ok: 'funcionou'
-    })
-})
+router.get('/clients/:id?', ClientsController.get)
 
 module.exports = router
