@@ -9,6 +9,26 @@ async function get(req, res){
 
     res.send(clients)
 }
+async function post(req, res){
+    const {
+        name,
+        email,
+        tel,
+        address,
+    } = req.body
+
+    const register = new ClientsModel({
+        name,
+        email,
+        tel,
+        address,
+    })
+
+    register.save()
+
+    res.send()
+}
+
 async function remove(req, res){
     const {id} = req.params
 
@@ -24,5 +44,6 @@ async function remove(req, res){
 
 module.exports = {
     get,
+    post,
     remove,
 }
