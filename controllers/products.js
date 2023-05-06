@@ -22,7 +22,12 @@ async function post(req, res){
 
     register.save()
 
-    res.send()
+    if(!register.ok){
+        message = 'error'
+    }
+    res.send({
+        message: 'success'
+    })
 }
 
 async function remove(req, res){

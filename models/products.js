@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-name : String,
-price: Number,
+    name: String,
+    price: Number,
 })
 
 const Model = mongoose.model('products', schema)
