@@ -1,12 +1,12 @@
-const API_URL = 'http://localhost:8080/api/products'
+const API_URL = 'http://localhost:8080/api/orders'
 
 const form = document.querySelector('#form')
 
 form.onsubmit = function(e) {
     e.preventDefault()
 
-    const name = document.forms['form'].name.value
-    const price = document.forms['form'].price.value
+    const date = document.forms['form'].date.value
+   
 
 
     fetch(API_URL, {
@@ -15,8 +15,7 @@ form.onsubmit = function(e) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name,
-            price
+            date,
         })
     }).then(response =>
         response.json().then(data =>{

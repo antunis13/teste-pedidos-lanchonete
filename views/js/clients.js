@@ -10,13 +10,6 @@ form.onsubmit = function(e) {
     const tel = document.forms['form'].tel.value
     const address = document.forms['form'].address.value
 
-    const data = {
-    name,
-    email,
-    tel,
-    address,
-};
-    console.log('Dados enviados:', JSON.stringify(data));
 
     fetch(API_URL, {
         method: 'POST',
@@ -41,3 +34,4 @@ form.onsubmit = function(e) {
         console.error(error) 
     })
 }
+

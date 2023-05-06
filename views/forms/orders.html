@@ -11,23 +11,14 @@
 
     <h2>Cadastro de Pedidos</h2>
 
-    <form>
-        <div>
-            <label>Código do cliente:</label>
-            <input type="text" name="idClient">
-        </div>
-        <div>
-            <label>Código do produto:</label>
-            <input type="text" name="idProduct">
-        </div>
+    <form id="form">
         <div>
             <label>Data de criação:</label>
-            <input type="number" name="date">
+            <input type="date" name="date">
         </div>
-        <div>
-            <label>Status:</label>
-            <input type="text" name="status">
-        </div>
+        <button type="submit">Cadastrar Pedido</button>
     </form>
+
+    <script src="/views/js/orders.js"></script>
 </body>
 </html>
