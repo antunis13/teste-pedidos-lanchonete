@@ -1,7 +1,9 @@
-const clientBtn = document.querySelector('#client')
+const clientsBtn = document.querySelector('#clients')
+const productsBtn = document.querySelector('#products')
+const ordersBtn = document.querySelector('#orders')
 
 
-function obterLista(){
+function obterListaClientes(){
     const clientsList = document.querySelector('#clients-list')
 
     fetch('http://localhost:8080/api/clients/').then(response =>{
@@ -22,7 +24,32 @@ function obterLista(){
     })
 }
 
-clientBtn.onclick = function(){
+function obterListaProdutos(){
+    const productsList = document.querySelector('#products-list')
 
-    obterLista()
+    fetch('http://localhost:8080/api/products/').then(response =>{
+        response.json().then(data =>{
+            const productsHtml = data.map(products => `
+                <li>
+                   Nome: ${products.name} <br>
+                   Price: ${products.price} <br>
+                
+                    <a href="#" class="remove-btn" data-id"${products.id}">Excluir</a>
+                    <hr>
+                </li>
+            `).join('')
+            productsList.innerHTML = productsHtml
+        })
+    })
+}
+
+
+clientsBtn.onclick = function(){
+
+    obterListaClientes()
+}
+
+productsBtn.onclick = function(){
+
+    obterListaProdutos()
 }

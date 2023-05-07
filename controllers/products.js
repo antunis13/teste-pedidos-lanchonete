@@ -5,7 +5,7 @@ async function get(req, res){
 
     const obj = id? {_id : id} : null
 
-    const products = await ProductsModel.findOne(obj)
+    const products = await ProductsModel.find(obj)
 
     res.send(products)
 }
