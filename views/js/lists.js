@@ -27,6 +27,31 @@ function eventoRemoverClientes(){
         }
     })
 }
+
+function eventoRemoverProdutos(){
+    const removeBtn = document.querySelectorAll('#remove-btn')
+
+    removeBtn.forEach(button => {
+        button.onclick = function(e){
+            e.preventDefault()
+            const id = this.dataset.id
+
+            fetch(`http://localhost:8080/api/products/${id}`, {
+            method: 'DELETE',
+            }).then(response => {
+                response.json().then(data =>{
+                    if(data.message = 'success'){
+                        alert('Produto excluído com sucesso')
+                        obterListaProdutos()
+                    }else{
+                        alert('Ocorreu um erro')
+                    }
+                })
+            })
+        }
+    })
+}
+
 function obterListaClientes(){
     const clientsList = document.querySelector('#clients-list')
 
@@ -60,11 +85,13 @@ function obterListaProdutos(){
                    Nome: ${products.name} <br>
                    Price: ${products.price} <br>
                 
-                    <a href="#" id="remove-btn" data-id"${products.id}">Excluir</a>
+                    <a href="#" id="remove-btn" data-id="${products._id}">Excluir</a>
                     <hr>
                 </li>
             `).join('')
             productsList.innerHTML = productsHtml
+
+            eventoRemoverProdutos()
         })
     })
 }
