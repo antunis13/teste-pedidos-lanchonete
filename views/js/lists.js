@@ -52,6 +52,30 @@ function eventoRemoverProdutos(){
     })
 }
 
+function eventoRemoverPedidos(){
+    const removeBtn = document.querySelectorAll('#remove-btn')
+
+    removeBtn.forEach(button => {
+        button.onclick = function(e){
+            e.preventDefault()
+            const id = this.dataset.id
+
+            fetch(`http://localhost:8080/api/orders/${id}`, {
+            method: 'DELETE',
+            }).then(response => {
+                response.json().then(data =>{
+                    if(data.message = 'success'){
+                        alert('Pedido excluído com sucesso')
+                        obterListaPedidos()
+                    }else{
+                        alert('Ocorreu um erro')
+                    }
+                })
+            })
+        }
+    })
+}
+
 function obterListaClientes(){
     const clientsList = document.querySelector('#clients-list')
 
@@ -96,6 +120,27 @@ function obterListaProdutos(){
     })
 }
 
+function obterListaPedidos(){
+    const ordersList = document.querySelector('#orders-list')
+
+    fetch('http://localhost:8080/api/orders/').then(response =>{
+        response.json().then(data =>{
+            const ordersHtml = data.map(orders => `
+                <li>
+                   Data de criação: ${orders.date}<br>
+                   Id do Produto: ${orders.idProduct} <br>
+                   Nome do Produto: ${orders.nameProduct} <br>
+                   Id do Cliente: ${orders.idClient}                
+                    <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a>
+                    <hr>
+                </li>
+            `).join('')
+            ordersList.innerHTML = ordersHtml
+
+            eventoRemoverPedidos()
+        })
+    })
+}
 
 clientsBtn.onclick = function(){
 
@@ -105,4 +150,8 @@ clientsBtn.onclick = function(){
 productsBtn.onclick = function(){
 
     obterListaProdutos()
+}
+
+ordersBtn.onclick = function(){
+    obterListaPedidos()
 }
