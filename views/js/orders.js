@@ -6,6 +6,9 @@ form.onsubmit = function(e) {
     e.preventDefault()
 
     const date = document.forms['form'].date.value
+    const idProduct = document.forms['form'].idProduct.value
+    const nameProduct = document.forms['form'].nameProduct.value
+    const idClient = document.forms['form'].idClient.value
    
 
 
@@ -16,6 +19,9 @@ form.onsubmit = function(e) {
         },
         body: JSON.stringify({
             date,
+            idProduct,
+            nameProduct,
+            idClient,
         })
     }).then(response =>
         response.json().then(data =>{
@@ -29,3 +35,40 @@ form.onsubmit = function(e) {
         console.error(error) 
     })
 }
+function obterListaProdutos(){
+    const productsList = document.querySelector('#products-list')
+
+    fetch('http://localhost:8080/api/products/').then(response =>{
+        response.json().then(data =>{
+            const productsHtml = data.map(products => `
+                <li>
+                   ID: ${products._id} <br>
+                   Nome: ${products.name} <br>
+                   Price: ${products.price} <br>
+                   <hr>
+                </li>
+            `).join('')
+            productsList.innerHTML = productsHtml
+        })
+    })
+}
+function obterListaClientes(){
+    const clientsList = document.querySelector('#clients-list')
+
+    fetch('http://localhost:8080/api/clients/').then(response =>{
+        response.json().then(data =>{
+            const clientsHtml = data.map(clients => `
+            <li>
+            ID: ${clients._id} <br>
+            Nome: ${clients.name} <br>
+            <hr>
+            </li>
+            `).join('')
+            clientsList.innerHTML = clientsHtml
+
+        })
+    })
+}
+
+obterListaClientes()
+obterListaProdutos()

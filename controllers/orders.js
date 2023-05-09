@@ -12,10 +12,16 @@ async function get(req, res){
 async function post(req, res){
     const {
         date,
+        idProduct,
+        nameProduct,
+        idClient,
     } = req.body
 
     const register = new OrdersModel({
         date,
+        idProduct,
+        nameProduct,
+        idClient,
     })
 
     register.save()

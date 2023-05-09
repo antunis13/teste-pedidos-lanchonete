@@ -16,8 +16,31 @@
             <label>Data de criação:</label>
             <input type="date" name="date">
         </div>
+        <div>
+            <label>Id do Produto:</label>
+            <input type="text" name="idProduct">
+        </div>
+        <div>
+            <label>Nome do Produto:</label>
+            <input type="text" name="nameProduct">
+        </div>
+        <div>
+            <label>Id do Cliente:</label>
+            <input type="text" name="idClient">
+        </div>
+
         <button type="submit">Cadastrar Pedido</button>
+
     </form>
+    <h2>Produtos</h2>
+    <hr>
+    <ul id="products-list"></ul>
+    <br>
+    <h2>Clientes</h2>
+    <hr>
+    <ul id="clients-list"></ul>
+
+    <a href="/views/main.html">Voltar para o Painel</a>
 
     <script src="/views/js/orders.js"></script>
 </body>

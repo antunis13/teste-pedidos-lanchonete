@@ -1,9 +1,10 @@
 
-const form = document.querySelector('#loginAdmin')
-const button = document.querySelector('#button')
+const formAdmin = document.querySelector('#loginAdmin')
 
 
-form.addEventListener('submit', e =>{
+
+
+formAdmin.addEventListener('submit', e =>{
     e.preventDefault()
     const name = document.querySelector('#name')
     const password = document.querySelector('#password')
