@@ -5,6 +5,11 @@ date: String,
 idProduct: String,
 nameProduct: String,
 idClient: String,
+status: {
+    type: String,
+    enum: ['pendente', 'em_preparo', 'em_entrega', 'entregue', 'cancelado'],
+    default: 'pendente'
+  }
 })
 
 const Model = mongoose.model('orders', schema)

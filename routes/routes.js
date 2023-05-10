@@ -22,4 +22,7 @@ router.get('/orders/:id?', OrdersController.get)
 router.post('/orders/', OrdersController.post)
 router.delete('/orders/:id', OrdersController.remove)
 
+//status
+router.put('/orders/:id/status', OrdersController.put)
+
 module.exports = router

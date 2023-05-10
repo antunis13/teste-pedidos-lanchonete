@@ -114,33 +114,87 @@ function obterListaProdutos(){
                 </li>
             `).join('')
             productsList.innerHTML = productsHtml
-
+            
             eventoRemoverProdutos()
         })
     })
 }
 
-function obterListaPedidos(){
+function obterListaPedidos() {
     const ordersList = document.querySelector('#orders-list')
-
-    fetch('http://localhost:8080/api/orders/').then(response =>{
-        response.json().then(data =>{
-            const ordersHtml = data.map(orders => `
-                <li>
-                   Data de criação: ${orders.date}<br>
-                   Id do Produto: ${orders.idProduct} <br>
-                   Nome do Produto: ${orders.nameProduct} <br>
-                   Id do Cliente: ${orders.idClient}                
-                    <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a>
-                    <hr>
-                </li>
-            `).join('')
-            ordersList.innerHTML = ordersHtml
-
-            eventoRemoverPedidos()
-        })
+    const statusEnum = [
+      { value: 'pendente', label: 'Pendente' },
+      { value: 'em_preparo', label: 'Em Preparo' },
+      { value: 'em_entrega', label: 'Em Entrega' },
+      { value: 'entregue', label: 'Entregue' },
+      { value: 'cancelado', label: 'Cancelado' }
+    ];
+  
+    function getStatusOptions(selectedStatus) {
+      let options = ''
+  
+      statusEnum.forEach(status => {
+        const selected = (status.value === selectedStatus) ? 'selected' : ''
+        options += `<option value="${status.value}" ${selected}>${status.label}</option>`
+      })
+  
+      return options
+    }
+  
+    fetch('http://localhost:8080/api/orders/').then(response => {
+      response.json().then(data => {
+        const ordersHtml = data.map(orders =>  `
+            <li>
+              Data de criação: ${orders.date}<br>
+              Id do Produto: ${orders.idProduct} <br>
+              Nome do Produto: ${orders.nameProduct} <br>
+              Id do Cliente: ${orders.idClient}<br>
+              <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a> <br>
+              <select id="statusSelect_${orders._id}" class="status-select" data-id="${orders._id}">
+                ${getStatusOptions(orders.status)}
+              </select>
+              <hr>
+            </li>
+        `).join('')
+  
+        ordersList.innerHTML = ordersHtml
+        eventoRemoverPedidos()
+        eventoAtualizarStatusPedidos()
+      })
     })
+  }
+
+function eventoAtualizarStatusPedidos() {
+    const statusSelects = document.querySelectorAll('.status-select');
+  
+    statusSelects.forEach(select => {
+      select.addEventListener('change', () => {
+        const orderId = select.dataset.id;
+        const newStatus = select.value;
+  
+        atualizarStatusPedido(orderId, newStatus);
+      });
+    });
 }
+   
+function atualizarStatusPedido(orderId, newStatus) {
+    fetch(`http://localhost:8080/api/orders/${orderId}/status`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ status: newStatus })
+    })
+    .then(response => {
+      
+      console.log(`Status do pedido ${orderId} atualizado para ${newStatus}`);
+    })
+    .catch(error => {
+      
+      console.error('Erro ao atualizar o status do pedido:', error);
+    });
+}
+  
 
 clientsBtn.onclick = function(){
 

@@ -15,6 +15,7 @@ async function post(req, res){
         idProduct,
         nameProduct,
         idClient,
+        status,
     } = req.body
 
     const register = new OrdersModel({
@@ -22,6 +23,7 @@ async function post(req, res){
         idProduct,
         nameProduct,
         idClient,
+        status,
     })
 
     register.save()
@@ -47,8 +49,22 @@ async function remove(req, res){
     })
 }
 
+async function put(req, res){
+    const {id} = req.params
+    const orderStatus = await OrdersModel.findById({_id : id})
+
+    orderStatus.status = req.body.status
+
+    await orderStatus.save()
+
+    res.send({
+        message: 'success'
+    })
+}
+
 module.exports = {
     get,
     post,
     remove,
+    put,
 }
