@@ -162,7 +162,7 @@ function obterListaPedidos() {
         eventoAtualizarStatusPedidos()
       })
     })
-  }
+}
 
 function eventoAtualizarStatusPedidos() {
     const statusSelects = document.querySelectorAll('.status-select');
