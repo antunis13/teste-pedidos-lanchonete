@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+body .formOrders {
+  width: 330px;
+  position: absolute;
+  left: 450px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 4px black;
+}
+body .formOrders h2 {
+  font-size: 30px;
+}
+body .formOrders .form {
+  margin: 10px 20px;
+  width: 300px;
+}
+body .formOrders .form .div {
+  margin: 10px 0px 10px 0px;
+}
+body .formOrders .form .div .label {
+  font-size: 20px;
+  color: black;
+}
+body .formOrders .form .div .input {
+  width: 300px;
+  margin-top: 5px;
+  padding: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 10px;
+  background-color: rgb(222, 219, 219);
+  font-size: 15px;
+}
+body .formOrders .form .register {
+  width: 300px;
+  margin-top: 5px;
+  padding: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 10px;
+  background-color: rgb(222, 219, 219);
+  font-size: 17px;
+}
+body .formOrders .return {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  margin: 10px;
+}
+body .formOrders .return .fa-solid {
+  margin-right: 5px;
+}
+body .formOrders .list {
+  list-style: none;
+}/*# sourceMappingURL=orders.css.map */

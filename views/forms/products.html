@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <script src="https://kit.fontawesome.com/de62180d47.js" crossorigin="anonymous"></script>
+    <title>Cadastro de Produtos</title>
 </head>
 <body>
     <h1>Painel de administração</h1>
-
-    <h2>Cadastro de Produtos</h2>
-    <form id="form">
-        <div>
-            <label>Nome:</label>
-            <input type="text" name="name">
-        </div>
-        <div>
-            <label>Preço:</label>
-            <input type="number" name="price">
-        </div>
-        <button type="submit">Cadastrar Produto</button>
-    </form>
-    <a href="/views/main.html">Voltar para o Painel</a>
+    <section class="formProducts">
+        <h2>Cadastro de Produtos</h2>
+        <form id="form" class="form">
+            <div class="div">
+                <label class="label">Nome:</label>
+                <input type="text" name="name" class="input">
+            </div>
+            <div class="div">
+                <label class="label">Preço:</label>
+                <input type="number" name="price" class="input">
+            </div>
+            <button type="submit" class="register">Cadastrar Produto</button>
+        </form>
+        <a href="/views/main.html" class="return"> <i class="fa-solid fa-arrow-left"></i>Voltar para o Painel</a>
+    </section>
         
 
     <script src="/views/js/products.js"></script>
