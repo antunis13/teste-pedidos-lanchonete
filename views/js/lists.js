@@ -2,6 +2,15 @@ const clientsBtn = document.querySelector('#clients')
 const productsBtn = document.querySelector('#products')
 const ordersBtn = document.querySelector('#orders')
 
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('#clients-list')) {
+        obterListaClientes()
+    } else if (document.querySelector('#products-list')) {
+        obterListaProdutos()
+    } else if (document.querySelector('#orders-list')) {
+        obterListaPedidos()
+    }
+})
 
 function eventoRemoverClientes(){
     const removeBtn = document.querySelectorAll('#remove-btn')
@@ -82,15 +91,22 @@ function obterListaClientes(){
     fetch('http://localhost:8080/api/clients/').then(response =>{
         response.json().then(data =>{
             const clientsHtml = data.map(clients => `
-            <li>
-            Nome: ${clients.name} <br>
-            Email: ${clients.email} <br>
-            Telefone: ${clients.tel} <br>
-            Endereço: ${clients.address} <br>
+                <ul>
+                    <li>
+                        <p>Nome:</p> ${clients.name} 
+                    </li>
+                    <li>
+                        <p>Email:</p> ${clients.email} 
+                    </li>
+                    <li>
+                        <p>Telefone:</p> ${clients.tel} 
+                    </li>
+                    <li>
+                        <p>Endereço:</p> ${clients.address}
+                    </li>
             
-            <a href="#" id="remove-btn" data-id="${clients._id}">Excluir</a>
-            <hr>
-            </li>
+                    <a href="#" id="remove-btn" class="remove" data-id="${clients._id}">Excluir</a>
+                </ul>
             `).join('')
             clientsList.innerHTML = clientsHtml
             
@@ -105,13 +121,17 @@ function obterListaProdutos(){
     fetch('http://localhost:8080/api/products/').then(response =>{
         response.json().then(data =>{
             const productsHtml = data.map(products => `
-                <li>
-                   Nome: ${products.name} <br>
-                   Price: ${products.price} <br>
+                <ul>
+                
+                   <li>
+                       <p>Nome:</p> <span>${products.name} </span>
+                   </li>
+                   <li>
+                       <p>Price:</p> ${products.price} 
+                   <li>
                 
                     <a href="#" id="remove-btn" data-id="${products._id}">Excluir</a>
-                    <hr>
-                </li>
+                </ul>
             `).join('')
             productsList.innerHTML = productsHtml
             
@@ -144,17 +164,25 @@ function obterListaPedidos() {
     fetch('http://localhost:8080/api/orders/').then(response => {
       response.json().then(data => {
         const ordersHtml = data.map(orders =>  `
-            <li>
-              Data de criação: ${orders.date}<br>
-              Id do Produto: ${orders.idProduct} <br>
-              Nome do Produto: ${orders.nameProduct} <br>
-              Id do Cliente: ${orders.idClient}<br>
-              <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a> <br>
+            <ul>
+              <li>
+                    <p>Data de criação:</p> ${orders.date}
+              </li>
+              <li>
+                    <p>Id do Produto:</p> ${orders.idProduct} 
+              </li>
+              <li>
+                    <p>Nome do Produto:</p> ${orders.nameProduct} 
+              </li>
+              <li>
+                    <p>Id do Cliente:</p> ${orders.idClient}
+              </li>
+              <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a> <br><br>
+              <p>Status: </p>
               <select id="statusSelect_${orders._id}" class="status-select" data-id="${orders._id}">
                 ${getStatusOptions(orders.status)}
               </select>
-              <hr>
-            </li>
+            </ul>
         `).join('')
   
         ordersList.innerHTML = ordersHtml
@@ -187,25 +215,11 @@ function atualizarStatusPedido(orderId, newStatus) {
     })
     .then(response => {
       
-      console.log(`Status do pedido ${orderId} atualizado para ${newStatus}`);
+      console.log(`Status do pedido ${orderId} atualizado para ${newStatus}`)
     })
     .catch(error => {
       
-      console.error('Erro ao atualizar o status do pedido:', error);
-    });
+      console.error('Erro ao atualizar o status do pedido:', error)
+    })
 }
   
-
-clientsBtn.onclick = function(){
-
-    obterListaClientes()
-}
-
-productsBtn.onclick = function(){
-
-    obterListaProdutos()
-}
-
-ordersBtn.onclick = function(){
-    obterListaPedidos()
-}

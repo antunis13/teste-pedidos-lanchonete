@@ -5,29 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/painel/painel.css">
 </head>
 <body>
     <h1>Painel de administração</h1>
 
     <section>
-        <div>
-            <label>Clientes</label>
+        <div class="cards">
+            <img alt="Icone dos Clientes" src="/public/imgs/cliente.png">
             <a href="forms/clients.html">Cadastrar cliente</a>
-            <button class="list" id="clients">Listar Clientes</button>
-            <ul id="clients-list"></ul>
+            <a href="clientlist.html" class="list" id="clients">Listar Clientes</a>
         </div>
-        <div>
-            <label>Produtos</label>
+        <div class="cards">
+            <img alt="Icone do Produto" src="/public/imgs/hamburguer.png">
             <a href="forms/products.html">Cadastrar produto</a>
-            <button class="list" id="products">Listar Produtos</button>
-            <ul id="products-list"></ul>
+            <a href="productlist.html" class="list" id="products">Listar Produtos</a>
         </div>
-        <div>
-            <label>Pedidos</label>
+        <div class="cards">
+            <img alt="Icone dos Pedidos" src="/public/imgs/lista-de-controle.png">
             <a href="forms/orders.html">Cadastrar pedido</a>
-            <button class="list" id="orders">Listar Pedidos</button>
-            <ul id="orders-list"></ul>
+            <a href="orderlist.html" class="list" id="orders">Listar Pedidos</a>
         </div>
     </section>
     <script src="js/lists.js"></script>

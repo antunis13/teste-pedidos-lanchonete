@@ -2,8 +2,6 @@
 const formAdmin = document.querySelector('#loginAdmin')
 
 
-
-
 formAdmin.addEventListener('submit', e =>{
     e.preventDefault()
     const name = document.querySelector('#name')

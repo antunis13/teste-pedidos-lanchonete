@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
+}
+
+body div {
+  margin: 20px 20px 20px 20px;
+}
+body div ul {
+  margin: 20px 0px 20px 0px;
+}
+body div ul li {
+  display: flex;
+  list-style: none;
+  margin: 10px 0px 10px 0px;
+}
+body div p {
+  font-weight: bold;
+  margin-right: 5px;
+}
+body div a {
+  color: red;
+  margin-bottom: 10px;
+}
+body div select {
+  color: blue;
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  box-shadow: 1px 1px 3px rgb(88, 88, 139);
+  padding: 10px;
+  transition: ease 500ms;
+}
+body .return {
+  padding: 5px;
+  font-size: 20px;
+  color: grey;
+  border: none;
+  border-radius: 15px;
+  margin: 10px 0px 10px 10px;
+  width: 50%;
+  height: 30px;
+  transition: ease-in 400ms;
+}
+body .return:hover {
+  font-size: 18px;
+  color: white;
+  width: 52%;
+  height: 35px;
+  background-color: black;
+  box-shadow: 1px 1px 1px white;
+  border-radius: 5px;
+}/*# sourceMappingURL=orderlist.css.map */
