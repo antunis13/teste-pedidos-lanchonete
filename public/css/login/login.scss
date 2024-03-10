@@ -1,5 +1,63 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
 body{
-    .hidden{
-        display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container{
+        margin-top: 40px;
+        width: 300px;
+        height: 400px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px black;
+        padding: 10px;
+        h2{
+            margin: 10px 0px 30px 0px;
+        }
+        form{
+            padding: 10px;
+            div{
+                text-align: left;
+                margin: 10px;
+                display: block;
+                label{
+                    font-size: 20px;
+                    display: block;
+                    margin-bottom: 5px;
+                }
+                input{
+                    padding: 10px;
+                    border: 1px solid black;
+                    width: 100%;
+                    border-radius: 10px;
+        
+                }
+            }
+            button{
+                margin-top: 20px;
+                padding: 5px;
+                font-size: 15px;
+                border: none;
+                border-radius: 15px;
+                width: 50%;
+                height: 30px;
+                transition: ease-in 400ms;
+                &:hover{
+                    font-size: 18px;
+                    color: white;
+                    width: 52%;
+                    height: 35px;
+                    background-color: black;
+                    box-shadow: 1px 1px 1px white;
+                    border-radius: 5px;
+                }
+            }
+        }
     }
 }
