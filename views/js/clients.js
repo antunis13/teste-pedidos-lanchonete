@@ -40,20 +40,30 @@ const validateForm = function(){
     const nameInput = document.forms['form'].name.value.trim()
     const emailInput = document.forms['form'].email.value.trim()
     const telInput = document.forms['form'].tel.value.trim()
+    const addressInput = document.forms['form'].address.trim()
     
-    if(nameInput === '' || nameInput === null){
-        alert("Preencha este campo corretamente!")
-    }else{
-
-        if(emailInput.indexOf("@")== -1 || emailInput.indexOf(".")== -1 || emailInput === '' || emailInput === null){
-            alert("Preencha este campo corretamente!")
-        }else{
-
-            if(telInput ===''|| telInput === null|| telInput.length < 9){
-                alert("Preencha este campo corretamente!")
-            }
-        }
+    if (!nameInput) {
+        alert("Preencha o campo nome corretamente!")
+        return false
     }
+
+    if (!emailInput || !emailInput.includes("@") || !emailInput.includes(".")) {
+        alert("Preencha o campo email corretamente!")
+        return false
+    }
+
+    if (!telInput || telInput.length < 9) {
+        alert("Preencha o campo telefone corretamente!")
+        return false
+    }
+
+    if (!addressInput) {
+        alert("Preencha o campo endereço corretamente.")
+        return false
+    }
+
+    console.log("Todos os campos foram preenchidos corretamente.")
+    return true
 } 
 form.addEventListener('submit', e =>{
     e.preventDefault()

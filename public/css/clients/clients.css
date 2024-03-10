@@ -2,31 +2,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
 }
 
-body h1 {
-  text-align: center;
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-body .formClient {
-  width: 330px;
-  position: absolute;
-  left: 450px;
+body {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+}
+body .formClient {
+  border: none;
+  margin-top: 40px;
+  align-items: center;
+}
+body .formClient h2 {
+  text-align: center;
+  font-size: 30px;
+  margin: 10px 0px 30px 0px;
+}
+body .formClient .form {
+  width: 330px;
+  margin-bottom: 20px;
+  padding: 15px;
   border: none;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   box-shadow: 1px 1px 4px black;
-}
-body .formClient h2 {
-  font-size: 30px;
-}
-body .formClient .form {
-  margin: 10px 20px;
-  width: 300px;
 }
 body .formClient .form .div {
   margin: 10px 0px 10px 0px;
@@ -36,31 +37,35 @@ body .formClient .form .div .label {
   color: black;
 }
 body .formClient .form .div .input {
-  width: 300px;
-  margin-top: 5px;
-  padding: 5px;
-  border: none;
-  box-shadow: 2px 2px 2px grey;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid black;
   border-radius: 10px;
-  background-color: rgb(222, 219, 219);
   font-size: 15px;
 }
 body .formClient .form .register {
-  width: 300px;
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 10px;
   padding: 5px;
   border: none;
   box-shadow: 2px 2px 2px grey;
   border-radius: 10px;
-  background-color: rgb(222, 219, 219);
   font-size: 17px;
 }
 body .formClient .return {
   text-decoration: none;
   font-size: 20px;
   color: black;
-  margin: 10px;
+  margin-top: 20px;
+  padding: 5px;
+  transition: ease-in 500ms;
 }
 body .formClient .return .fa-solid {
   margin-right: 5px;
+}
+body .formClient .return:hover {
+  color: white;
+  background-color: black;
+  border-radius: 10px;
 }/*# sourceMappingURL=clients.css.map */
