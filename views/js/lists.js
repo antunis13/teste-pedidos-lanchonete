@@ -175,7 +175,7 @@ function obterListaPedidos() {
                     <p>Nome do Produto:</p> ${orders.nameProduct} 
               </li>
               <li>
-                    <p>Id do Cliente:</p> ${orders.idClient}
+                    <p>Nome do Cliente:</p> ${orders.nameClient}
               </li>
               <a href="#" id="remove-btn" data-id="${orders._id}">Excluir</a> <br><br>
               <p>Status: </p>

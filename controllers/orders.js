@@ -14,7 +14,7 @@ async function post(req, res){
         date,
         idProduct,
         nameProduct,
-        idClient,
+        nameClient,
         status,
     } = req.body
 
@@ -22,7 +22,7 @@ async function post(req, res){
         date,
         idProduct,
         nameProduct,
-        idClient,
+        nameClient,
         status,
     })
 

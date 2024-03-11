@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
 date: String,
 idProduct: String,
 nameProduct: String,
-idClient: String,
+nameClient: String,
 status: {
     type: String,
     enum: ['pendente', 'em_preparo', 'em_entrega', 'entregue', 'cancelado'],

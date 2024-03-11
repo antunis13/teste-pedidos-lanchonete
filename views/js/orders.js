@@ -8,7 +8,7 @@ form.onsubmit = function(e) {
     const date = document.forms['form'].date.value
     const idProduct = document.forms['form'].idProduct.value
     const nameProduct = document.forms['form'].nameProduct.value
-    const idClient = document.forms['form'].idClient.value
+    const nameClient = document.forms['form'].nameClient.value
    
 
 
@@ -21,7 +21,7 @@ form.onsubmit = function(e) {
             date,
             idProduct,
             nameProduct,
-            idClient,
+            nameClient,
         })
     }).then(response =>
         response.json().then(data =>{

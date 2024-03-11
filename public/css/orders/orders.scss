@@ -2,30 +2,31 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    list-style: none;
 }
 body{
-    h1{
-        text-align: center;
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    
     .formOrders{
-        width: 330px;
-        position: absolute;
-        left: 450px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
         border: none;
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        box-shadow: 1px 1px 4px black;
+        margin-top: 40px;
+        align-items: center;
         h2{
+            text-align: center;
             font-size: 30px;
+            margin: 10px 0px 30px 0px;
         }
         .form{
-            margin: 10px 20px;
-            width: 300px;
+            width: 330px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 1px 1px 4px black;
             .div{
                 margin:10px 0px 10px 0px;
                .label{
@@ -33,39 +34,46 @@ body{
                 color: black;
                }
                .input{
-                width: 300px;
-                margin-top: 5px;
-                padding: 5px;
-                border: none;
-                box-shadow: 2px 2px 2px grey;
+                width: 100%;
+                margin-top: 10px;
+                padding: 10px;
+                border: 1px solid black;
                 border-radius: 10px;
-                background-color: rgb(222, 219, 219);
                 font-size: 15px;
                }
             }
             .register{
-                width: 300px;
-                margin-top: 5px;
+                width: 100%;
+                margin-top: 10px;
                 padding: 5px;
                 border: none;
                 box-shadow: 2px 2px 2px grey;
                 border-radius: 10px;
-                background-color: rgb(222, 219, 219);
                 font-size: 17px;
             }
+        }
+        .list{
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px grey;
+            
         }
         .return{
             text-decoration: none;
             font-size: 20px;
             color: black;
-            margin: 10px;
-
+            margin-top: 20px;
+            padding: 5px;
+            transition: ease-in 500ms;
             .fa-solid{
                 margin-right: 5px;
             }
-        }
-        .list{
-            list-style: none;
+            &:hover{
+                color: white;
+                background-color: black;
+                border-radius: 10px;
+            }
         }
     }
 }
