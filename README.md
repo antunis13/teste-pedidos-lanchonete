@@ -11,6 +11,8 @@ Password: 123
 
 git clone teste-pedidos-lanchonete
 
+install nodemon
+
 npm run dev
 
 Open Live Server
