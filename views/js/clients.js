@@ -2,70 +2,59 @@ const API_URL = 'http://localhost:8080/api/clients/'
 
 const form = document.querySelector('#form')
 
-form.onsubmit = function(e) {
-    e.preventDefault()
+form.addEventListener('submit', function(event) {
+    event.preventDefault()
 
-    const name = document.forms['form'].name.value
-    const email = document.forms['form'].email.value
-    const tel = document.forms['form'].tel.value
-    const address = document.forms['form'].address.value
+    const name = form.name.value 
+    const email = form.email.value
+    const tel = form.tel.value
+    const address = form.address.value
 
+    
+    if (!name.trim()) {
+        alert("Preencha o campo nome corretamente!")
+        return 
+    }
 
+    if (!email.trim() || !email.includes("@") || !email.includes(".")) {
+        alert("Preencha o campo email corretamente!")
+        return
+    }
 
+    if (!tel.trim() || tel.length < 9) {
+        alert("Preencha o campo telefone corretamente!")
+        return
+    }
+
+    if (!address.trim()) {
+        alert("Preencha o campo endereço corretamente.")
+        return
+    }
+
+    console.log("Todos os campos foram preenchidos corretamente.")
+
+    
     fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name,
-            email,
-            tel,
-            address,
+            name: name,
+            email: email,
+            tel: tel,
+            address: address,
         })
-    }).then(response =>{
-        response.json().then(data =>{
-            if(data.message === 'success'){
-                alert('Cadastrado')
-                form.reset()
-            }
-        })
+    }).then(response => response.json())
+    .then(data => {
+        if (data.message === 'success') {
+            alert('Cadastrado com sucesso!')
+            form.reset()
+        } else {
+            alert('Verifique os dados e tente novamente.')
+        }
     }).catch(error => {
-        alert('Ocorreu um erro ao processar a solicitação.');
-        console.error(error) 
+        alert('Ocorreu um erro ao processar a solicitação.')
+        console.error(error);
     })
-}
-
-const validateForm = function(){
-    const nameInput = document.forms['form'].name.value.trim()
-    const emailInput = document.forms['form'].email.value.trim()
-    const telInput = document.forms['form'].tel.value.trim()
-    const addressInput = document.forms['form'].address.trim()
-    
-    if (!nameInput) {
-        alert("Preencha o campo nome corretamente!")
-        return false
-    }
-
-    if (!emailInput || !emailInput.includes("@") || !emailInput.includes(".")) {
-        alert("Preencha o campo email corretamente!")
-        return false
-    }
-
-    if (!telInput || telInput.length < 9) {
-        alert("Preencha o campo telefone corretamente!")
-        return false
-    }
-
-    if (!addressInput) {
-        alert("Preencha o campo endereço corretamente.")
-        return false
-    }
-
-    console.log("Todos os campos foram preenchidos corretamente.")
-    return true
-} 
-form.addEventListener('submit', e =>{
-    e.preventDefault()
-    validateForm()
 })
