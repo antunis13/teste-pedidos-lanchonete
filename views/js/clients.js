@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:8080/api/clients/'
 
 const form = document.querySelector('#form')
 
-form.addEventListener('submit', function(event) {
+const formSubmit = (event) => {
     event.preventDefault()
 
     const name = form.name.value 
@@ -57,4 +57,10 @@ form.addEventListener('submit', function(event) {
         alert('Ocorreu um erro ao processar a solicitação.')
         console.error(error);
     })
-})
+}
+
+function init(){
+    form.addEventListener('submit', formSubmit)
+}
+
+init()

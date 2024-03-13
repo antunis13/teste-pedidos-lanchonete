@@ -2,12 +2,22 @@ const API_URL = 'http://localhost:8080/api/products'
 
 const form = document.querySelector('#form')
 
-form.onsubmit = function(e) {
-    e.preventDefault()
+const formSubmit = (event) => {
+    event.preventDefault()
 
-    const name = document.forms['form'].name.value
-    const price = document.forms['form'].price.value
+    const name = form.name.value
+    const price = form.price.value
 
+    if(!name.trim()){
+        alert('Preencha o campo nome do produto corretamente')
+        return
+    }
+    if(!price.trim()){
+        alert('Preencha o campo preço corretamente')
+        return
+    }
+
+    console.log('Todos os campos foram preenchidos corretamente')
 
     fetch(API_URL, {
         method: 'POST',
@@ -30,3 +40,9 @@ form.onsubmit = function(e) {
         console.error(error) 
     })
 }
+
+function init (){
+    form.addEventListener('submit', formSubmit)
+}
+
+init()
